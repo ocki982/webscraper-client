@@ -12,7 +12,7 @@ const Table = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const { data } = await axios("https://basir.github.io/products.json");
+        const { data } = await axios("http://localhost:8080/list");
         setProducts(data);
         setLoading(false);
       } catch (err) {
@@ -27,33 +27,27 @@ const Table = () => {
     () => [
       {
         Header: "Name of Business",
-        accessor: "category",
-      },
-      {
-        Header: "Address",
         accessor: "name",
       },
       {
+        Header: "Address",
+        accessor: "address",
+      },
+      {
         Header: "City/State/ZIP",
-        accessor: "price",
-        aggregate: "average",
-        Aggregated: ({ value }) => `${Math.round(value * 100) / 100} (avg)`,
+        accessor: "city",
       },
       {
         Header: "Point of Contact",
-        accessor: "countInStock",
-        aggregate: "sum",
-        Aggregated: ({ value }) => `${value} (sum)`,
+        accessor: "contact",
       },
       {
         Header: "Telephone",
-        accessor: "brand",
+        accessor: "tel",
       },
       {
         Header: "Type of Service",
-        accessor: "rating",
-        aggregate: "average",
-        Aggregated: ({ value }) => `${Math.round(value * 100) / 100} (avg)`,
+        accessor: "service",
       },
     ],
     []

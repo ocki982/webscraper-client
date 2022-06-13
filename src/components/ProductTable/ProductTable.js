@@ -6,8 +6,8 @@ export default function ProductTable({ columns, data }) {
     useTable({ columns, data }, useGroupBy, useSortBy, useExpanded);
 
   return (
-    <table {...getTableProps()}>
-      <thead>
+    <table className='table' {...getTableProps()}>
+      <thead className='table__header'>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
@@ -28,14 +28,14 @@ export default function ProductTable({ columns, data }) {
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()}>
+      <tbody className='table__body'{...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 return (
-                  <td {...cell.getCellProps()}>
+                  <td className='table__cell' {...cell.getCellProps()}>
                     {cell.isGrouped ? (
                       // If it's a grouped cell, add an expander and row count
                       <>
