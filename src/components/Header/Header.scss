@@ -1,0 +1,87 @@
+.official{
+    background-color: #f3f3f3;
+    display: flex;
+    padding: 0.3rem 1rem;
+    justify-content: flex-start;
+
+    &__flag{
+        height: 1rem;
+        margin-right: 0.5rem;
+    }
+
+    &__text{
+        padding: 0;
+        margin: 0;
+        font-size: 0.7rem;
+    }
+}
+.header{
+    background-color: #00599c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+
+    &__logo{
+        margin-left: 1rem;
+    }
+
+    &__list{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        gap: 1rem;
+
+        &--cat{
+            color: white;
+            border-right: solid 1px white;
+            padding-right: 1rem;
+            font-size: 0.8rem;
+            height: 1.2rem;
+        }
+
+        &--charities{
+            width: 1.4rem;
+            height: 1.1rem;
+            margin-right: 0.3rem;
+        }
+
+        &--tax{
+            border: none;
+        }
+
+        &--tax-image{
+            width: 1.4rem;
+            height: 1.1rem;
+            margin-right: 0.3rem;
+        }
+    }
+}
+
+.subHeader{
+    background-color: #002d62;
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__list{
+        padding: 0;
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+
+        &--cat{
+            color: white;
+        }
+    }
+
+    &__search{
+        width: 15rem;
+        height: 1.5rem;
+    }
+
+    &__search::placeholder{
+        padding: 0 0.5rem;
+    }
+}
