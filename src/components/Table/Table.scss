@@ -22,11 +22,16 @@
         background-color: #ccc;
     }
 
+    &__title{
+        padding: 0.5rem;
+    }
+
     &__body{
         background-color: rgb(247, 247, 247);
     }
 
     &__cell{
         text-align: center;
+        padding: 0.5rem;
     }
 }

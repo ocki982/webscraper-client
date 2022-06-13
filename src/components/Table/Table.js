@@ -1,27 +1,27 @@
 import React from "react";
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import ProductTable from "../ProductTable/ProductTable";
+import ListTable from "../ListTable/ListTable";
 import "./Table.scss";
 
 const Table = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [list, setList] = useState([]);
+  const [loadingList, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchList = async () => {
       setLoading(true);
       try {
         const { data } = await axios("http://localhost:8080/list");
-        setProducts(data);
+        setList(data);
         setLoading(false);
       } catch (err) {
-        setProducts([]);
+        setList([]);
         console.log(err);
         setLoading(false);
       }
     };
-    fetchProducts();
+    fetchList();
   }, []);
   const columns = useMemo(
     () => [
@@ -59,14 +59,14 @@ const Table = () => {
         <a href="https://www.irs.gov/">Home</a> / E-file Provider Search
       </p>
       <h1 className="page__title">Authorized IRS e-file Providers</h1>
-      <h2 className="page__subtitle">Found 77 Matching Items</h2>
-      <div className="table-container">
-        {loading ? (
-          <span>Loading Products...</span>
+      <h2 className="page__subtitle">Found 18 Matching Items</h2>
+      <section className="table-container">
+        {loadingList ? (
+          <div>Loading List...</div>
         ) : (
-          <ProductTable columns={columns} data={products} />
+          <ListTable columns={columns} data={list} />
         )}
-      </div>
+      </section>
     </div>
   );
 };

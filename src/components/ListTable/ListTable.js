@@ -11,17 +11,17 @@ export default function ProductTable({ columns, data }) {
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                {column.canGroupBy && column.id === 'category' ? (
-                  <span {...column.getGroupByToggleProps()}>
+              <th className='table__title' {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {column.canGroupBy  === 'category' ? (
+                  <div {...column.getGroupByToggleProps()}>
                     {' '}
-                    {column.isGrouped ? '+ ' : '- '}
-                  </span>
+                    {column.isGrouped ? '+' : '-'}
+                  </div>
                 ) : null}
 
                 {column.render('Header')}
                 <span>
-                  {column.isSorted ? (column.isSortedDesc ? ' ▼' : ' ▲') : ''}
+                  {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
                 </span>
               </th>
             ))}
@@ -37,19 +37,13 @@ export default function ProductTable({ columns, data }) {
                 return (
                   <td className='table__cell' {...cell.getCellProps()}>
                     {cell.isGrouped ? (
-                      // If it's a grouped cell, add an expander and row count
                       <>
-                        <span {...row.getToggleRowExpandedProps()}>
+                        <div {...row.getToggleRowExpandedProps()}>
                           {row.isExpanded ? '-' : '+'}
-                        </span>{' '}
+                        </div>{' '}
                         {cell.render('Cell')} ({row.subRows.length})
                       </>
-                    ) : cell.isAggregated ? (
-                      // If the cell is aggregated, use the Aggregated
-                      // renderer for cell
-                      cell.render('Aggregated')
-                    ) : cell.isPlaceholder ? null : ( // For cells with repeated values, render null
-                      // Otherwise, just render the regular cell
+                    ) : cell.isPlaceholder ? null : ( 
                       cell.render('Cell')
                     )}
                   </td>
